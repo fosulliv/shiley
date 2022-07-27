@@ -28,13 +28,10 @@ var endNumbers = function(filePath){
     }
     d3.csv(filePath, rowConverter).then(function(data){
         var dates = [...new Set(data.map(d => d.date))]
-        console.log(dates)
-        console.log(data)
         var totalScreened = d3.sum(data, d => d.screened_total)
         var totalReferred = d3.sum(data, d => d.refer)
         var glassesTotal = d3.sum(data, d => d.rx_given)
         var totalExamined = d3.sum(data, d => d.exams_given)
-        console.log(totalExamined, glassesTotal)
         var dd = {Screened: totalScreened}
         var dd2 = {Screened: totalScreened, Referred: totalReferred};
         const sleep = (milliseconds) => {
@@ -223,28 +220,28 @@ var endNumbers = function(filePath){
                                             .attr('y', 120)
                                             .style('font-size', 18)
                                             .style('text-anchor', 'start')
-                                            .text('Examined: '+totalExamined)
+                                            .text('Examined: 1020')
                                         var caption4 = svg.append('text').attr('class', 'yearEndFont')
                                             .style('opacity', 0)
                                             .attr('x', 410)
                                             .attr('y', 140)
                                             .style('font-size', 18)
                                             .style('text-anchor', 'start')
-                                            .text('(~44.3%)')
+                                            .text('(~45.5%)')
                                         var text7 = svg.append('text')
                                             .attr('x', 100)
                                             .attr('y', 770)
                                             .attr('class', 'yearEndFont')
                                             .style('text-anchor', 'start')
                                             .style('opacity', 0)
-                                            .text('Of those referred, '+totalExamined+', or')
+                                            .text('Of those referred, 1020, or')
                                         var text8 = svg.append('text')
                                             .attr('x', 100)
                                             .attr('y', 800)
                                             .attr('class', 'yearEndFont')
                                             .style('text-anchor', 'start')
                                             .style('opacity', 0)
-                                            .text('about 44.3%, were examined on the')
+                                            .text('about 45.5%, were examined on the')
                                         var text9 = svg.append('text')
                                             .attr('x', 100)
                                             .attr('y', 830)
@@ -303,7 +300,7 @@ var endNumbers = function(filePath){
                                                 .attr('fill', 'none')
                                                 .attr('stroke-width', 60)
                                                 .attr('stroke', '#9EDAFB')
-                                            var length6 = path7.node().getTotalLength() * (1 - 0.4429081177520071364852809991079393398751115075825156110615521855);
+                                            var length6 = path7.node().getTotalLength() * (1 - 0.4549509366636931311329170383586083853702051739518287243532560214);
                                             path7.attr('stroke-dasharray', length6 + ' ' + length6)
                                                 .attr('stroke-dashoffset', length6)
                                                 .transition()
@@ -373,14 +370,14 @@ var endNumbers = function(filePath){
                                                             .attr('y', 135)
                                                             .style('font-size', 18)
                                                             .style('text-anchor', 'start')
-                                                            .text('Given glasses: '+glassesTotal)
+                                                            .text('Given glasses: 676')
                                                         var caption6 = svg.append('text').attr('class', 'yearEndFont')
                                                             .style('opacity', 0)
                                                             .attr('x', 430)
                                                             .attr('y', 155)
                                                             .style('text-anchor', 'start')
                                                             .style('font-size', 18)
-                                                            .text('(~32.0%)')
+                                                            .text('(~66.3%)')
                                                         var text12 = svg.append('text')
                                                             .attr('x', 100)
                                                             .attr('y', 940)
@@ -401,14 +398,14 @@ var endNumbers = function(filePath){
                                                             .attr('class', 'yearEndFont')
                                                             .style('text-anchor', 'start')
                                                             .style('opacity', 0)
-                                                            .text('to give out '+glassesTotal+' free pairs of')
+                                                            .text('to give out 676 free pairs of')
                                                         var text15 = svg.append('text')
                                                             .attr('x', 100)
                                                             .attr('y', 1030)
                                                             .attr('class', 'yearEndFont')
                                                             .style('text-anchor', 'start')
                                                             .style('opacity', 0)
-                                                            .text('glasses (nearly 1/3 of those examined)!')
+                                                            .text('glasses (nearly 2/3 of those examined)!')
                                                         var dPath6 = d3.path();
                                                         dPath6.arc(width/2, height/2, 150, 0, 180)
                                                         var path8 = svg.append('path').attr('d', dPath6)
@@ -433,7 +430,7 @@ var endNumbers = function(filePath){
                                                                 .attr('fill', 'none')
                                                                 .attr('stroke-width', 60)
                                                                 .attr('stroke', '#9EDAFB')
-                                                            var length8 = path9.node().getTotalLength();
+                                                            var length8 = path9.node().getTotalLength() ;
                                                             path9.attr('stroke-dasharray', length8 + ' ' + length8)
                                                                 .attr('stroke-dashoffset', length8)
                                                                 .transition()
@@ -448,7 +445,7 @@ var endNumbers = function(filePath){
                                                                 .attr('fill', 'none')
                                                                 .attr('stroke-width', 60)
                                                                 .attr('stroke', '#174A66')
-                                                            var length9 = path10.node().getTotalLength() * (1 - 0.3202416918429003021148036253776435045317220543806646525679758308);
+                                                            var length9 = path10.node().getTotalLength() * (1 - 0.6627450980392156862745098039215686274509803921568627450980392156);
                                                             path10.attr('stroke-dasharray', length9 + ' ' + length9)
                                                                 .attr('stroke-dashoffset', length9)
                                                                 .transition()
@@ -494,6 +491,373 @@ var endNumbers = function(filePath){
                                                                 .style('opacity', 1)
                                                         })
                                                         isStarted3 = false;
+                                                        var isStarted4 = true;
+                                                        d3.select('#buttonStart').on('click', function(){
+                                                            if (isStarted4){
+                                                                caption5.transition().duration(1000).style('opacity', 0)
+                                                                caption6.transition().duration(1000).style('opacity', 0)
+                                                                text15.transition().duration(1000).style('opacity', 0)
+                                                                text14.transition().duration(1000).delay(200).style('opacity', 0)
+                                                                text13.transition().duration(1000).delay(400).style('opacity', 0)
+                                                                text12.transition().duration(1000).delay(600).style('opacity', 0)
+                                                                text11.transition().duration(1000).delay(800).style('opacity', 0)
+                                                                text10.transition().duration(1000).delay(1000).style('opacity', 0)
+                                                                text9.transition().duration(1000).delay(1200).style('opacity', 0)
+                                                                text8.transition().duration(1000).delay(1400).style('opacity', 0)
+                                                                text7.transition().duration(1000).delay(1600).style('opacity', 0)
+                                                                text6.transition().duration(1000).delay(1800).style('opacity', 0)
+                                                                text5.transition().duration(1000).delay(2000).style('opacity', 0)
+                                                                text4.transition().duration(1000).delay(2200).style('opacity', 0)
+                                                                text3.transition().duration(1000).delay(2400).style('opacity', 0)
+                                                                text2.transition().duration(1000).delay(2600).style('opacity', 0)
+                                                                text1.transition().duration(1000).delay(2800).style('opacity', 0)
+
+                                                                d3.selectAll('path').transition('1').duration(1500).style('opacity', 0)
+                                                                d3.selectAll('path').transition('2').duration(4000)
+                                                                    .attr('transform', 'translate(1000,-300)')
+                                                                var dd3 = [{'month': 'August', 'days_out': 8, 'locations': 8, '18_19': 1, 'exams': 81, 'glasses': 68},
+                                                                            {'month': 'September', 'days_out': 5, 'locations': 5, '18_19': 0, 'exams': 32, 'glasses': 23},
+                                                                        {'month': 'October', 'days_out': 7, 'locations': 7, '18_19': 21, 'exams': 65, 'glasses': 42},
+                                                                    {'month': 'November', 'days_out': 6, 'locations': 10, '18_19': 14, 'exams': 51, 'glasses': 39},
+                                                                {'month': 'December', 'days_out': 3, 'locations': 3, '18_19': 12, 'exams': 44, 'glasses': 33},
+                                                                {'month': 'January', 'days_out': 0, 'locations': 0, '18_19': 14, 'exams': 0, 'glasses': 0},
+                                                                {'month': 'February', 'days_out': 7, 'locations': 10, '18_19': 12, 'exams': 79, 'glasses': 51},
+                                                                {'month': 'March', 'days_out': 12, 'locations': 19, '18_19': 9, 'exams': 122, 'glasses': 91},
+                                                                {'month': 'April', 'days_out': 16, 'locations': 22, '18_19': 19, 'exams': 262, 'glasses': 164},
+                                                                {'month': 'May', 'days_out': 19, 'locations': 32, '18_19': 20, 'exams': 218, 'glasses': 153},
+                                                                {'month': 'June', 'days_out': 16, 'locations': 23, '18_19': 19, 'exams': 240, 'glasses': 162},
+                                                                {'month': 'July', 'days_out': 6, 'locations': 7, '18_19': 11, 'exams': 97, 'glasses': 69}];
+                                                                var text16 = svg.append('text')
+                                                                    .attr('x', 75)
+                                                                    .attr('y', 600)
+                                                                    .attr('class', 'yearEndFont')
+                                                                    .text('Above is a chart of all the days the EyeMobile went')
+                                                                    .style('opacity', 0)
+                                                                var text17 = svg.append('text')
+                                                                    .attr('x', 75)
+                                                                    .attr('y', 630)
+                                                                    .attr('class', 'yearEndFont')
+                                                                    .text('out in each month of the 2021-2022 school year.')
+                                                                    .style('opacity', 0)
+                                                                var text18 = svg.append('text')
+                                                                    .attr('x', 75)
+                                                                    .attr('y', 675)
+                                                                    .attr('class', 'yearEndFont')
+                                                                    .text('The number of days out peaked in May and was')
+                                                                    .style('opacity', 0)
+                                                                var text19 = svg.append('text')
+                                                                    .attr('x', 75)
+                                                                    .attr('y', 705)
+                                                                    .attr('class', 'yearEndFont')
+                                                                    .text('higher at the end of the year when COVID')
+                                                                    .style('opacity', 0)
+                                                                var text20 = svg.append('text')
+                                                                    .attr('x', 75)
+                                                                    .attr('y', 735)
+                                                                    .attr('class', 'yearEndFont')
+                                                                    .text('restrictions were the lowest.')
+                                                                    .style('opacity', 0)
+                                                                var text21 = svg.append('text')
+                                                                    .attr('x', 75)
+                                                                    .attr('y', 780)
+                                                                    .attr('class', 'yearEndFont')
+                                                                    .style('font-size', 23)
+                                                                    .style('font-weight', 600)
+                                                                    .text('In total, the EyeMobile was out for 104')
+                                                                    .style('opacity', 0)
+                                                                var text22 = svg.append('text')
+                                                                    .attr('x', 75)
+                                                                    .attr('y', 810)
+                                                                    .attr('class', 'yearEndFont')
+                                                                    .style('font-size', 23)
+                                                                    .style('font-weight', 600)
+                                                                    .text('days in the 2021-2022 school year.')
+                                                                    .style('opacity', 0)
+                                                                sleep(4000).then(() => {
+                                                                    var xScale = d3.scaleBand()
+                                                                        .domain(dd3.map(d => d.month))
+                                                                        .range([50, 550]).padding(0.2)
+                                                                    var xAxis = svg.append('g')
+                                                                        .attr('transform', 'translate(0,500)')
+                                                                        .call(d3.axisBottom(xScale))
+                                                                        .selectAll('text')
+                                                                            .attr('class', 'yearEndFont')
+                                                                            .style('font-size', 14)
+                                                                            .attr('transform', 'translate(-10,0)rotate(-45)')
+                                                                            .style('text-anchor', 'end')
+                                                                            .style('opacity', 0)
+                                                                    var yScale = d3.scaleLinear()
+                                                                        .domain([0, d3.max(dd3, d => d.days_out)])
+                                                                        .range([500, 100])
+                                                                    var heightScale = d3.scaleLinear()
+                                                                        .domain([0, d3.max(dd3, d => d.days_out)])
+                                                                        .range([0, 400])
+                                                                    var tooltip = d3.select('#animation')
+                                                                        .append('div')
+                                                                        .style('opacity', 0)
+                                                                        .attr('class', 'tooltip2')
+                                                                        .style('background-color', 'white')
+                                                                        .style('border', 'solid')
+                                                                        .style('border-width', '2px')
+                                                                        .style('border-radius', '5px')
+                                                                        .style('padding', '5px')
+                                                                    var mouseover = function(d){
+                                                                        tooltip.style('opacity', 1)
+                                                                        d3.select(this).style('stroke-width', 6).style('opacity', 1)
+                                                                    }
+                                                                    var mousemove = function(d, event){
+                                                                        tooltip
+                                                                            .html('<u>'+event.month+'</u>'+'<br>Number of days out: '+event.days_out)
+                                                                            .style('left', d.pageX-50).style('top', d.pageY-75)
+                                                                    }
+                                                                    var mouseleave = function(d){
+                                                                        tooltip.style('opacity', 0)
+                                                                        d3.select(this).style('stroke-width', 1).style('opacity', 0.8)
+                                                                    }
+                                                                    var yAxis = svg.append('g')
+                                                                        .call(d3.axisLeft(yScale))
+                                                                        .attr('transform', 'translate(50,0)')
+                                                                        .style('opacity', 0)
+                                                                    xAxis.transition('3').duration(800).style('opacity', 1)
+                                                                    yAxis.transition('4').duration(800).style('opacity', 1)
+                                                                    var bars = svg.selectAll('mybar')
+                                                                        .data(dd3)
+                                                                        .join('rect')
+                                                                            .attr('x', d => xScale(d.month))
+                                                                            .attr('width', xScale.bandwidth())
+                                                                            .attr('fill', '#174A66')
+                                                                            .attr('height', d => heightScale(0))
+                                                                            .attr('y', d => yScale(0))
+                                                                            .style('opacity', 0.8)
+                                                                            .on('mouseover', mouseover)
+                                                                            .on('mousemove', mousemove)
+                                                                            .on('mouseleave', mouseleave)
+                                                                    sleep(800).then(()=>{
+                                                                        bars
+                                                                            .transition()
+                                                                            .duration(800)
+                                                                            .attr('y', d => yScale(d.days_out))
+                                                                            .attr('height', d => heightScale(d.days_out))
+                                                                            .delay((d,i) => {return i*150});
+                                                                        text16.transition().delay(800).duration(800).style('opacity', 1)
+                                                                        text17.transition().delay(800).duration(800).style('opacity', 1)
+                                                                        text18.transition().delay(1600).duration(800).style('opacity', 1)
+                                                                        text19.transition().delay(1600).duration(800).style('opacity', 1)
+                                                                        text20.transition().delay(1600).duration(800).style('opacity', 1)
+                                                                        text21.transition().delay(2800).duration(800).style('opacity', 1)
+                                                                        text22.transition().delay(2800).duration(800).style('opacity', 1)
+                                                                        isStarted4 = false;
+                                                                        var isStarted5 = true;
+                                                                        d3.select('#buttonStart').on('click', function(){
+                                                                            if (isStarted5){
+                                                                                text16.transition().duration(800).style('opacity', 0)
+                                                                                text17.transition().duration(800).style('opacity', 0)
+                                                                                text18.transition().duration(800).style('opacity', 0)
+                                                                                text19.transition().duration(800).style('opacity', 0)
+                                                                                text20.transition().duration(800).style('opacity', 0)
+                                                                                text21.transition().duration(800).style('opacity', 0)
+                                                                                text22.transition().duration(800).style('opacity', 0)
+                                                                                yScale
+                                                                                    .domain([0, d3.max(dd3, d => d.locations)])
+                                                                                heightScale
+                                                                                    .domain([0, d3.max(dd3, d => d.locations)])
+                                                                                yAxis.transition().duration(800)
+                                                                                    .call(d3.axisLeft(yScale))
+                                                                                    .attr('transform', 'translate(50,0)')
+                                                                                var mousemove2 = function(d, event){
+                                                                                    tooltip
+                                                                                        .html('<u>'+event.month+'</u>'+'<br>Number of locations visited: '+event.locations)
+                                                                                        .style('left', d.pageX-50).style('top', d.pageY-75)
+                                                                                }
+                                                                                bars.transition()
+                                                                                    .duration(800)
+                                                                                    .ease(e)
+                                                                                    .attr('y', d => yScale(d.locations))
+                                                                                    .attr('height', d => heightScale(d.locations))
+                                                                                    .delay((d, i) => {return i*150})
+                                                                                bars
+                                                                                    .on('mousemove', mousemove2)
+                                                                                text16
+                                                                                    .transition()
+                                                                                    .delay(801)
+                                                                                    .text('Above is a chart of the number of unique')
+                                                                                text17
+                                                                                    .transition()
+                                                                                    .delay(801)
+                                                                                    .text('locations the EyeMobile visited in each month.')
+                                                                                text18
+                                                                                    .transition()
+                                                                                    .delay(801)
+                                                                                    .text('The same pattern is seen in this chart, with the')
+                                                                                text19
+                                                                                    .transition()
+                                                                                    .delay(801)
+                                                                                    .text('number of locations visited peaking later in')
+                                                                                text20
+                                                                                    .transition()
+                                                                                    .delay(801)
+                                                                                    .text('the year.')
+                                                                                text21.transition()
+                                                                                    .delay(801)
+                                                                                    .text('In total, the EyeMobile visited 146 different')
+                                                                                text22.transition()
+                                                                                    .delay(801)
+                                                                                    .text('locations in the 2021-2022 school year.')
+                                                                                text16.transition().delay(1200).duration(800).style('opacity', 1)
+                                                                                text17.transition().delay(1200).duration(800).style('opacity', 1)
+                                                                                text18.transition().delay(1800).duration(800).style('opacity', 1)
+                                                                                text19.transition().delay(1800).duration(800).style('opacity', 1)
+                                                                                text20.transition().delay(1800).duration(800).style('opacity', 1)
+                                                                                text21.transition().delay(3000).duration(800).style('opacity', 1)
+                                                                                text22.transition().delay(3000).duration(800).style('opacity', 1)
+                                                                            isStarted5 = false;
+                                                                            var isStarted6 = true;
+                                                                            d3.select('#buttonStart').on('click', function(){
+                                                                                if (isStarted6){
+                                                                                bars
+                                                                                    .transition()
+                                                                                    .duration(800)
+                                                                                    .delay((d, i) => {return i*150})
+                                                                                    .ease(e)
+                                                                                    .attr('height', 0)
+                                                                                    .attr('y', 500)
+                                                                                yScale
+                                                                                    .domain([0, d3.max(dd3, d => d.exams)]);
+                                                                                heightScale
+                                                                                    .domain([0, d3.max(dd3, d => d.exams)]);
+                                                                                yAxis.transition().duration(1000)
+                                                                                    .call(d3.axisLeft(yScale))
+                                                                                text16.transition().duration(800).style('opacity', 0)
+                                                                                text17.transition().duration(800).style('opacity', 0)
+                                                                                text18.transition().duration(800).style('opacity', 0)
+                                                                                text19.transition().duration(800).style('opacity', 0)
+                                                                                text20.transition().duration(800).style('opacity', 0)
+                                                                                text21.transition().duration(800).style('opacity', 0)
+                                                                                text22.transition().duration(800).style('opacity', 0)
+                                                                                const subgroups = ['exams', 'glasses'];
+                                                                                const groups = data.map(d => d.month);
+                                                                                d3.selectAll('rect').transition().delay(2499).remove();
+                                                                                sleep(2500).then(() => {
+                                                                                    const xSubGroup = d3.scaleBand()
+                                                                                        .domain(subgroups)
+                                                                                        .range([0, xScale.bandwidth()])
+                                                                                        .padding([0.05])
+                                                                                    const colorScale = d3.scaleOrdinal()
+                                                                                        .domain(subgroups)
+                                                                                        .range(['#174A66', '#9EDAFB'])
+                                                                                    var tooltip2 = d3.select('#animation')
+                                                                                        .append('div')
+                                                                                        .style('opacity', 0)
+                                                                                        .attr('class', 'tooltip2')
+                                                                                        .style('background-color', 'white')
+                                                                                        .style('border', 'solid')
+                                                                                        .style('border-width', '2px')
+                                                                                        .style('border-radius', '5px')
+                                                                                        .style('padding', '5px')
+                                                                                    var mouseover2 = function(d){
+                                                                                        tooltip2.style('opacity', 1)
+                                                                                        d3.select(this).style('stroke-width', 6).style('opacity', 1)
+                                                                                    }
+                                                                                    var mousemove3 = function(d, event){
+                                                                                        var mouseoverText;
+                                                                                        if (event.key == 'exams'){
+                                                                                            mouseoverText = 'exams done.'
+                                                                                        }
+                                                                                        if (event.key == 'glasses'){
+                                                                                            mouseoverText = 'pairs of glasses given out.'
+                                                                                        }
+                                                                                        tooltip2
+                                                                                            .html('<u>'+event.month+'</u>'+`<br>${event.value} ${mouseoverText}`)
+                                                                                            .style('left', d.pageX-50).style('top', d.pageY-75)
+                                                                                    }
+                                                                                    var mouseleave2 = function(d){
+                                                                                        tooltip2.style('opacity', 0)
+                                                                                        d3.select(this).style('stroke-width', 1).style('opacity', 0.8)
+                                                                                    }
+                                                                                    var groupedBars = svg.append('g')
+                                                                                        .selectAll('g')
+                                                                                        .data(dd3)
+                                                                                        .join('g')
+                                                                                            .attr('transform', d => `translate(${xScale(d.month)}, 0)`)
+                                                                                        .selectAll('rect')
+                                                                                        .data(function(d) { return subgroups.map(function(key){ return {key: key, value: d[key], month: d['month']}; }); })
+                                                                                        .join('rect')
+                                                                                            .attr('x', d => xSubGroup(d.key))
+                                                                                            .attr('y', d => 500)
+                                                                                            .attr('width', xSubGroup.bandwidth())
+                                                                                            .attr('height', 0)
+                                                                                            .attr('fill', d => colorScale(d.key))
+                                                                                            .style('opacity', 0.8)
+                                                                                            .on('mouseover', mouseover2)
+                                                                                            .on('mousemove', mousemove3)
+                                                                                            .on('mouseleave', mouseleave2);
+                                                                                    d3.selectAll('rect')
+                                                                                        .transition()
+                                                                                        .duration(800)
+                                                                                        .ease(e)
+                                                                                        .attr('y', d => yScale(d.value))
+                                                                                        .attr('height', d => heightScale(d.value))
+                                                                                        .delay((d, i) => {return i*150})
+                                                                                    var legend1 = svg.append('circle')
+                                                                                        .attr('cx', 80)
+                                                                                        .attr('cy', 120)
+                                                                                        .attr('r', 5)
+                                                                                        .attr('fill', '#174A66')
+                                                                                        .style('opacity', 0)
+                                                                                    var legendText1 = svg.append('text')
+                                                                                        .attr('x', 90)
+                                                                                        .attr('y', 125)
+                                                                                        .attr('class', 'yearEndFont')
+                                                                                        .style('font-size', 14)
+                                                                                        .text('# of exams')
+                                                                                        .style('text-anchor', 'start')
+                                                                                        .style('opacity', 0)
+                                                                                    var legend2 = svg.append('circle')
+                                                                                        .attr('cx', 80)
+                                                                                        .attr('cy', 140)
+                                                                                        .attr('r', 5)
+                                                                                        .attr('fill', '#9EDAFB')
+                                                                                        .style('opacity', 0)
+                                                                                    var legendText2 = svg.append('text')
+                                                                                        .attr('x', 90)
+                                                                                        .attr('y', 145)
+                                                                                        .attr('class', 'yearEndFont')
+                                                                                        .style('font-size', 14)
+                                                                                        .text('# of glasses given out')
+                                                                                        .style('text-anchor', 'start')
+                                                                                        .style('opacity', 0)
+                                                                                    legend1.transition().delay(2000).duration(800).style('opacity', 1)
+                                                                                    legend2.transition().delay(2000).duration(800).style('opacity', 1)
+                                                                                    legendText1.transition().delay(2000).duration(800).style('opacity', 1)
+                                                                                    legendText2.transition().delay(2000).duration(800).style('opacity', 1)
+                                                                                    text16.transition()
+                                                                                        .text('Above is a chart showing the number of')
+                                                                                    text17.transition()
+                                                                                        .text('exams and glasses given out each month.')
+                                                                                    text21.transition()
+                                                                                        .attr('y', 675)
+                                                                                        .text('In total, we performed 1,020 exams and gave')
+                                                                                    text22.transition()
+                                                                                        .attr('y', 705)
+                                                                                        .text('out 676 pairs of free glasses this school year.')
+                                                                                    text16.transition().delay(2200).duration(800).style('opacity', 1)
+                                                                                    text17.transition().delay(2200).duration(800).style('opacity', 1)
+                                                                                    text21.transition().delay(2200).duration(800).style('opacity', 1)
+                                                                                    text22.transition().delay(2200).duration(800).style('opacity', 1)
+                                                                                    isStarted6 = false;
+                                                                                })
+                                                                            }
+                                                                            })
+                                                                            }
+                                                                        })
+                                                                    })
+                                                                    
+
+                                                                })
+                                                                
+
+                                                            }
+                                                        })
                                                     }
                                                 })
                                         })
